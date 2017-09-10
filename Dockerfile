@@ -35,13 +35,13 @@ RUN apt-get install -y\
 # The rest of ROS-desktop
 RUN apt-get install -y ros-indigo-desktop-full
 
-# Install Tensorflow
-RUN apt-get install python-pip python-dev
-RUN pip install tensorflow
-
 # Additional development tools
 RUN apt-get install -y x11-apps python-pip build-essential
 RUN pip install catkin_tools
+
+# Install Tensorflow
+RUN pip install numpy --upgrade
+RUN pip install tensorflow
 
 # Make SSH available
 EXPOSE 22
@@ -55,7 +55,6 @@ RUN \
   echo "${user}:x:${uid}:" >> /etc/group && \
   echo "${user} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${user}" && \
   chmod 0440 "/etc/sudoers.d/${user}"
-RUN source "/home/fran/ros/devel/setup.bash"
 
 # Switch to user
 USER "${user}"
