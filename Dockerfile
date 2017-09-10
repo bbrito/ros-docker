@@ -40,8 +40,9 @@ RUN apt-get install -y x11-apps python-pip build-essential
 RUN pip install catkin_tools
 
 # Install Tensorflow
-RUN pip install numpy --upgrade
-RUN pip install tensorflow
+RUN apt-get install -y python-dev
+RUN pip install numpy pip --upgrade
+RUN pip install tensorflow --upgrade
 
 # Make SSH available
 EXPOSE 22
