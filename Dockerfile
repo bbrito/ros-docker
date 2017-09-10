@@ -10,6 +10,9 @@ ARG shell
 # Basic Utilities
 RUN apt-get -y update && apt-get install -y zsh screen tree sudo ssh synaptic
 
+# Instal LibSVM
+RUN apt-get install -y libsvm-dev
+
 # Latest X11 / mesa GL
 RUN apt-get install -y\
   xserver-xorg-dev-lts-wily\
@@ -31,9 +34,6 @@ RUN apt-get install -y\
 
 # The rest of ROS-desktop
 RUN apt-get install -y ros-indigo-desktop-full
-
-# Instal LibSVM
-RUN apt-get install libsvm-dev
 
 # Install Tensorflow
 RUN apt-get install python-pip python-dev
